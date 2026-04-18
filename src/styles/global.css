@@ -29,7 +29,6 @@
   --green-ios: #34c759;
   --teal:      #1d9e75;
   --rust:      #d85a30;
-  --topnav_bg: #898989;
   --msg-received-bubble: #053888 ;
   --msg-sent-bubble: #496BFC;
   --msg-text: #F6F6F6;
@@ -51,66 +50,6 @@ body {
   color: var(--ink);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ─── Progress bar ───────────────────────────────────────── */
-.progress-bar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: rgba(0,0,0,0.08);
-  z-index: 200;
-}
-.progress-fill {
-  height: 100%;
-  background: var(--blue);
-  transition: width 0.1s linear;
-}
-
-/* ─── Top nav ────────────────────────────────────────────── */
-.topnav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  background: var(--topnav_bg);
-  border-bottom: 0.5px solid var(--border);
-  z-index: 300;
-  display: flex;
-  align-items: center;
-}
-.topnav-inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.topnav-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;  /* adjust this for spacing between the two logos */
-}
-.topnav-logo-img {
-  height: 32px;
-  width: auto;
-}
-.topnav-logo-placeholder {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  color: var(--muted);
-  border: 1.5px dashed var(--border);
-  padding: 4px 12px;
-  border-radius: 4px;
-}
-.topnav-pub {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: .04em;
 }
 
 /* ─── Overlay ────────────────────────────────────────────── */
@@ -205,9 +144,6 @@ body {
   50%      { opacity:  1; transform: translateY(6px); }
 }
 
-/* Scroll spacer */
-.msg-spacer { width: 100%; }
-
 /* ─── Article hero (sticky behind overlay) ──────────────── */
 .article-hero-sticky {
   position: sticky;
@@ -262,29 +198,6 @@ body {
   font-size: 22px; font-weight: 700; margin-bottom: .6rem;
 }
 .body-text { font-size: 17px; color: var(--ink-soft); margin-bottom: 1rem; }
-
-/* Chart card */
-.chart-card {
-  background: var(--bg-card); border: 0.5px solid var(--border);
-  border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem 0;
-}
-.chart-label {
-  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-  color: #999; font-family: var(--font-ui); margin-bottom: 4px;
-}
-.chart-title {
-  font-size: 15px; font-weight: 600; color: var(--ink);
-  font-family: var(--font-ui); margin-bottom: 8px;
-}
-.legend {
-  display: flex; flex-wrap: wrap; gap: 12px;
-  margin: 6px 0 14px; font-size: 12px; color: #666; font-family: var(--font-ui);
-}
-.legend-item { display: flex; align-items: center; gap: 5px; }
-.legend-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-.chart-caption {
-  font-size: 13px; color: var(--muted); font-family: var(--font-ui); margin-top: 10px;
-}
 
 /* Finding box */
 .finding-box {
@@ -438,5 +351,4 @@ body {
 @media (max-width: 500px) {
   .article-title { font-size: 26px; }
   .stat-row { grid-template-columns: 1fr; }
-  .bubble { font-size: 15px; max-width: 80%; }
 }
