@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Akis-B/ECE476InteractiveArticle#readme",
   "dependencies": {
+    "papaparse": "^5.5.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },

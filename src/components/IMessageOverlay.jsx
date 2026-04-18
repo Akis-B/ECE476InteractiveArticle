@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const MESSAGES = [
   { id: 0, type: 'sent',     text: 'hi i want to rent a house' },
@@ -11,10 +11,11 @@ export const MESSAGES = [
 ]
 
 // spacerRef is owned by the parent — it points to the scroll-zone wrapper
-export default function IMessageOverlay({ spacerRef }) {
+export default function IMessageOverlay({ spacerRef, onDone }) {
   const [visible, setVisible]             = useState(new Set())
   const [overlayOpacity, setOverlayOpacity] = useState(1)
   const [done, setDone]                   = useState(false)
+  const calledDone = useRef(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,7 +25,7 @@ export default function IMessageOverlay({ spacerRef }) {
       const spacerTop  = spacer.getBoundingClientRect().top + window.scrollY
       const scrolled   = Math.max(0, window.scrollY - spacerTop)
       const total      = MESSAGES.length
-      const revealZone = spacer.offsetHeight * 0.50
+      const revealZone = spacer.offsetHeight * 0.82
       const fadeZone   = spacer.offsetHeight * 0.18
 
       const next = new Set()
@@ -36,7 +37,12 @@ export default function IMessageOverlay({ spacerRef }) {
       if (scrolled >= revealZone) {
         const fadeProgress = Math.min(1, (scrolled - revealZone) / fadeZone)
         setOverlayOpacity(1 - fadeProgress)
-        setDone(fadeProgress >= 1)
+        const isDone = fadeProgress >= 1
+        setDone(isDone)
+        if (isDone && !calledDone.current) {
+          calledDone.current = true
+          onDone?.()
+        }
       } else {
         setOverlayOpacity(1)
         setDone(false)
