@@ -7,9 +7,11 @@ const body_1 = <>The Housing Rights Initiative (HRI) is a national non-profit wa
 
 const body_2 = <>Section 8 Housing Vouchers, a part of the Housing Choice Voucher Program, is a federal rental assistance program managed by the U.S. Department of Housing and Urban Development (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>). It assists low-income families, seniors, and people with disabilities to afford safe, private-market housing.</>
 
-const body_3 = <>While explicit refusals are now illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
+const body_3 = <>Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual income, defined as below 50% of the local Area Median Income (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>).</>
 
-const body_4 = <>Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual income, defined as below 50% of the local Area Median Income (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>).</>
+
+const body_4 = <>While explicit refusals are now illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
+
 
 const body_5 = <>Placeholder text for section five.</>
 const body_6 = <>Placeholder text for section six.</>
@@ -20,12 +22,16 @@ const body_10 = <>Placeholder text for section ten.</>
 
 const BOXES = [
   { id: 1,  title: 'Who are we?',   activation: 0.05, body: body_1 },
+
   { id: 2,  title: 'What is a Section 8 Voucher?',   activation: 0.15, body: body_2 },
-  { id: 3,  title: 'Our investigation:', activation: 0.25, body: body_3 },
-  { id: 4,  title: 'Who can be a voucher holder?',  activation: 0.35, body: body_4,
+  
+  { id: 3,  title: 'Who can be a voucher holder?',  activation: 0.25, body: body_3,
     graphic: <img src={whoSec8} alt="Who can be a Section 8 voucher holder" style={{ width: '100%', marginTop: '12px', filter: 'brightness(0) invert(1)' }} />,
     note: <>National Profile (<a href="https://vcresearch.berkeley.edu/news/who-served-housing-choice-voucher-program" target="_blank" rel="noreferrer" style={LINK}>UC Berkeley</a>).</>
   },
+
+  { id: 4,  title: 'Our investigation:', activation: 0.35, body: body_4 },
+  
   { id: 5,  title: 'Five',  activation: 0.45, body: body_5 },
   { id: 6,  title: 'Six',   activation: 0.55, body: body_6 },
   { id: 7,  title: 'Seven', activation: 0.65, body: body_7 },
