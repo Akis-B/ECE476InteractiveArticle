@@ -2,17 +2,32 @@ import { useEffect, useRef } from 'react'
 
 const LOREM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis.'
 
+const body_1 = 'The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.'
+
+const body_2 = 'Section 8 Housing Vouchers, a part of the Housing Choice Voucher Program, is a federal rental assistance program managed by the U.S. Department of Housing and Urban Development (HUD). It assists low-income families, seniors, and people with disabilities to afford safe, private-market housing.'
+
+const body_3 = 'While explicit refusals are now illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.'
+
+const body_4 = 'Section 8 eligibility requires a “Very Low” annual income, defined as below 50% of the local Area Median Income (HUD).'
+
+const body_5 = 'Placeholder text for section five.'
+const body_6 = 'Placeholder text for section six.'
+const body_7 = 'Placeholder text for section seven.'
+const body_8 = 'Placeholder text for section eight.'
+const body_9 = 'Placeholder text for section nine.'
+const body_10 = 'Placeholder text for section ten.'
+
 const BOXES = [
-  { id: 1,  title: 'One',   activation: 0.05 },
-  { id: 2,  title: 'Two',   activation: 0.15 },
-  { id: 3,  title: 'Three', activation: 0.25 },
-  { id: 4,  title: 'Four',  activation: 0.35 },
-  { id: 5,  title: 'Five',  activation: 0.45 },
-  { id: 6,  title: 'Six',   activation: 0.55 },
-  { id: 7,  title: 'Seven', activation: 0.65 },
-  { id: 8,  title: 'Eight', activation: 0.75 },
-  { id: 9,  title: 'Nine',  activation: 0.85 },
-  { id: 10, title: 'Ten',   activation: 0.95 },
+  { id: 1,  title: 'Who are we?',   activation: 0.05, body: body_1 },
+  { id: 2,  title: 'What is a Section 8 Voucher?',   activation: 0.15, body: body_2 },
+  { id: 3,  title: 'Our investigation:', activation: 0.25, body: body_3 },
+  { id: 4,  title: 'Who can be a voucher holder?',  activation: 0.35, body: body_4 },
+  { id: 5,  title: 'Five',  activation: 0.45, body: body_5 },
+  { id: 6,  title: 'Six',   activation: 0.55, body: body_6 },
+  { id: 7,  title: 'Seven', activation: 0.65, body: body_7 },
+  { id: 8,  title: 'Eight', activation: 0.75, body: body_8 },
+  { id: 9,  title: 'Nine',  activation: 0.85, body: body_9 },
+  { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
 ]
 
 // Container is 1100vh tall, viewport is 100vh → maxScroll = 1000vh.
@@ -68,7 +83,7 @@ export default function ArticleNarrative({ updateRef }) {
                 {box.title}
               </h3>
               <p style={{ fontSize: '17px', lineHeight: 1.55 }}>
-                {LOREM}
+                {box.body}
               </p>
             </div>
           </div>
