@@ -18,7 +18,9 @@ const body_6 = <>Property owner limits prospective tenants to specific propertie
 const body_7 = <>Landlords/brokers stop responding to section 8 voucher holders requests.</>
 const body_8 = <>Property owner outwardly says that they don't accept housing vouchers.</>
 const body_9 = <>The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.</>
-const body_10 = <>Placeholder text for section ten.</>
+const body_10 = <><i>Finding a property that accepts vouchers is really hard. Renters face discrimination, as landlords have negative perceptions of voucher holders.</i></>
+const body_11 = <>While explicit refusals are illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. Text message sting operations are conducted by HRI in Los Angeles and San Francisco, CA.</>
+const body_12 = <>In our investigation, we found that landlords sometimes deny Section 8 Voucher holders because they do not wish to go through the inspection process of their property in fear of losing money.</>
 
 const BOXES = [
   { id: 1,  title: 'Who are we?',   activation: 0.05, body: body_1 },
@@ -37,7 +39,9 @@ const BOXES = [
   { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7 },
   { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8 },
   { id: 9,  title: 'About Housing Rights Initiative:',  activation: 0.85, body: body_9 },
-  { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
+  { id: 10, title: 'The Harsh Reality of Housing Search',   activation: 0.95, body: body_10 },
+  { id: 11, title: 'Our Findings', activation: 1.05, body: body_11 },
+  { id: 12, title: 'Landlord Motivations', activation: 1.15, body: body_12 },
 ]
 
 // Container is 1100vh tall, viewport is 100vh → maxScroll = 1000vh.
