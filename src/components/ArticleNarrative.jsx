@@ -16,8 +16,8 @@ const body_4 = <>While explicit refusals are now illegal in many states, our dat
 const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (&ldquo;soft discrimination&rdquo;).</>
 const body_6 = <>Property owner limits prospective tenants to specific properties, or deny knowing what a section 8 voucher is.</>
 const body_7 = <>Landlords/brokers stop responding to section 8 voucher holders requests.</>
-const body_8 = <>Property owner outwardly says that they don’t accept housing vouchers.</>
-const body_9 = <>Placeholder text for section nine.</>
+const body_8 = <>Property owner outwardly says that they don't accept housing vouchers.</>
+const body_9 = <>The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.</>
 const body_10 = <>Placeholder text for section ten.</>
 
 const BOXES = [
@@ -36,7 +36,7 @@ const BOXES = [
   { id: 6,  title: 'Steering',   activation: 0.55, body: body_6 },
   { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7 },
   { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8 },
-  { id: 9,  title: 'Nine',  activation: 0.85, body: body_9 },
+  { id: 9,  title: 'About Housing Rights Initiative:',  activation: 0.85, body: body_9 },
   { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
 ]
 
