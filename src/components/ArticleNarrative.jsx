@@ -13,10 +13,10 @@ const body_3 = <>Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual 
 const body_4 = <>While explicit refusals are now illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
 
 
-const body_5 = <>Placeholder text for section five.</>
-const body_6 = <>Placeholder text for section six.</>
-const body_7 = <>Placeholder text for section seven.</>
-const body_8 = <>Placeholder text for section eight.</>
+const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (&ldquo;soft discrimination&rdquo;).</>
+const body_6 = <>Property owner limits prospective tenants to specific properties, or deny knowing what a section 8 voucher is.</>
+const body_7 = <>Landlords/brokers stop responding to section 8 voucher holders requests.</>
+const body_8 = <>Property owner outwardly says that they don’t accept housing vouchers.</>
 const body_9 = <>Placeholder text for section nine.</>
 const body_10 = <>Placeholder text for section ten.</>
 
@@ -31,11 +31,11 @@ const BOXES = [
   },
 
   { id: 4,  title: 'Our investigation:', activation: 0.35, body: body_4 },
-  
-  { id: 5,  title: 'Five',  activation: 0.45, body: body_5 },
-  { id: 6,  title: 'Six',   activation: 0.55, body: body_6 },
-  { id: 7,  title: 'Seven', activation: 0.65, body: body_7 },
-  { id: 8,  title: 'Eight', activation: 0.75, body: body_8 },
+
+  { id: 5,  title: 'Types of discrimination:',  activation: 0.45, body: body_5 },
+  { id: 6,  title: 'Steering',   activation: 0.55, body: body_6 },
+  { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7 },
+  { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8 },
   { id: 9,  title: 'Nine',  activation: 0.85, body: body_9 },
   { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
 ]
