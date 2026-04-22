@@ -4,15 +4,15 @@ import TranscriptWindow from './TranscriptWindow'
 import ArticleNarrative from './ArticleNarrative'
 import BottomProgressBar from './BottomProgressBar'
 
-const TOTAL_ROWS = 1313
-
-export default function ScrollExperience({ rows }) {
+export default function ScrollExperience({ rows, city }) {
   const containerRef = useRef(null)
   const [activeRowIndex, setActiveRowIndex] = useState(0)
 
   const canvasDrawRef      = useRef(null)
   const progressBarFillRef = useRef(null)
   const boxUpdateRef       = useRef(null)
+
+  const totalCount = rows.length
 
   useEffect(() => {
     let rafId      = null
@@ -26,7 +26,14 @@ export default function ScrollExperience({ rows }) {
         const maxScroll = container.offsetHeight - window.innerHeight
         const scrolled  = Math.max(0, -rect.top)
         const progress  = Math.max(0, Math.min(1, scrolled / maxScroll))
-        const arf       = progress * TOTAL_ROWS
+
+        const startData = 0.00
+        const endData   = 0.95
+        let arf = 0
+        if (progress >= startData) {
+          const dataProgress = Math.min(1, (progress - startData) / (endData - startData))
+          arf = dataProgress * totalCount
+        }
 
         if (Math.abs(arf - lastARF) > 0.0005) {
           lastARF = arf
@@ -51,7 +58,7 @@ export default function ScrollExperience({ rows }) {
 
     rafId = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafId)
-  }, [rows.length])
+  }, [rows.length, totalCount])
 
   return (
     <>
@@ -59,7 +66,6 @@ export default function ScrollExperience({ rows }) {
         ref={containerRef}
         style={{ position: 'relative', height: '1100vh', background: '#fff' }}
       >
-        {/* Left panel — sticky, 62vw × 100vh, with outer margins */}
         <div style={{
           position:      'sticky',
           top:           0,
@@ -71,18 +77,16 @@ export default function ScrollExperience({ rows }) {
           background:    '#fff',
           borderRight:   '1px solid #ebebeb',
           boxSizing:     'border-box',
-          padding:       '36px 28px 24px 48px',
+          padding:       '24px 16px 16px 24px',
           zIndex:        1,
         }}>
           <TranscriptWindow rows={rows} activeRowIndex={activeRowIndex} />
-          {/* Visible gap between transcript and matrix */}
           <div style={{ height: '16px', flexShrink: 0 }} />
           <div style={{ flex: 1, minHeight: 0 }}>
-            <MatrixCanvas rows={rows} drawRef={canvasDrawRef} />
+            <MatrixCanvas rows={rows} drawRef={canvasDrawRef} city={city} />
           </div>
         </div>
 
-        {/* Right panel — absolute, 38vw, full container height, with outer margins */}
         <div style={{
           position:   'absolute',
           top:        0,
@@ -93,7 +97,7 @@ export default function ScrollExperience({ rows }) {
           paddingLeft:'28px',
           paddingRight:'48px',
         }}>
-          <ArticleNarrative updateRef={boxUpdateRef} />
+          <ArticleNarrative updateRef={boxUpdateRef} rows={rows} />
         </div>
       </div>
 
