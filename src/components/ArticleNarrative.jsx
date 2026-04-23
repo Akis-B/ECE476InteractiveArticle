@@ -16,12 +16,14 @@ const body_3 = <>Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual 
 const body_4 = <>While explicit refusals are now illegal in many states (via source of income protections), our data reveals that voucher-holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
 
 
-const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (termed &ldquo;soft discrimination&rdquo;).</>
-const body_6 = <>Property owners limit prospective tenants to specific properties, or deny knowing what a Section 8 voucher is.</>
-const body_7 = <>Landlords/brokers stop responding to Section 8 voucher-holders' requests.</>
-const body_8 = <>Property owners explicitly say that they do not accept housing vouchers.</>
-const body_9 = <>Placeholder text for section nine.</>
-const body_10 = <>Placeholder text for section ten.</>
+const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (&ldquo;soft discrimination&rdquo;).</>
+const body_6 = <>Property owner limits prospective tenants to specific properties, or deny knowing what a section 8 voucher is.</>
+const body_7 = <>Landlords/brokers stop responding to section 8 voucher holders requests.</>
+const body_8 = <>Property owner outwardly says that they don't accept housing vouchers.</>
+const body_9 = <>The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.</>
+const body_10 = <><i>Finding a property that accepts vouchers is really hard. Renters face discrimination, as landlords have negative perceptions of voucher holders.</i></>
+const body_11 = <>While explicit refusals are illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. Text message sting operations are conducted by HRI in Los Angeles and San Francisco, CA.</>
+const body_12 = <>In our investigation, we found that landlords sometimes deny Section 8 Voucher holders because they do not wish to go through the inspection process of their property in fear of losing money.</>
 
 const BOXES = [
   { id: 1,  title: 'Who are we?',   activation: 0.05, body: body_1 },
@@ -36,11 +38,13 @@ const BOXES = [
   { id: 4,  title: 'Our investigation:', activation: 0.35, body: body_4 },
 
   { id: 5,  title: 'Types of discrimination:',  activation: 0.45, body: body_5 },
-  { id: 6,  title: 'Steering',   activation: 0.55, body: body_6, graphic: <img src={steering} alt="Steering" style={{ width: '100%', marginTop: '12px', }} /> },
-  { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7, graphic: <img src={ghosting} alt="Ghosting" style={{ width: '100%', marginTop: '12px', }} /> },
-  { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8, graphic: <img src={rejection} alt="Rejection" style={{ width: '100%', marginTop: '12px', }} /> },
-  { id: 9,  title: 'Nine',  activation: 0.85, body: body_9 },
-  { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
+  { id: 6,  title: 'Steering',   activation: 0.55, body: body_6 },
+  { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7 },
+  { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8 },
+  { id: 9,  title: 'About Housing Rights Initiative:',  activation: 0.85, body: body_9 },
+  { id: 10, title: 'The Harsh Reality of Housing Search',   activation: 0.95, body: body_10 },
+  { id: 11, title: 'Our Findings', activation: 1.05, body: body_11 },
+  { id: 12, title: 'Landlord Motivations', activation: 1.15, body: body_12 },
 ]
 
 // Container is 1100vh tall, viewport is 100vh → maxScroll = 1000vh.
