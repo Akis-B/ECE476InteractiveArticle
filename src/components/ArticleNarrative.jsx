@@ -1,22 +1,25 @@
 import { useEffect, useRef } from 'react'
 import whoSec8 from '../assets/illustrations/who_sec_8.svg'
+import steering from '../assets/illustrations/steering.svg'
+import rejection from '../assets/illustrations/rejection.svg'
+import ghosting from '../assets/illustrations/ghosting.svg'
 
 const LINK = { color: '#fff', textDecoration: 'underline' }
 
-const body_1 = <>The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.</>
+const body_1 = <>The Housing Rights Initiative (<a href="https://www.housingrightsus.org/." target="_blank" rel="noreferrer" style={LINK}>HRI</a>) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.</>
 
 const body_2 = <>Section 8 Housing Vouchers, a part of the Housing Choice Voucher Program, is a federal rental assistance program managed by the U.S. Department of Housing and Urban Development (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>). It assists low-income families, seniors, and people with disabilities to afford safe, private-market housing.</>
 
 const body_3 = <>Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual income, defined as below 50% of the local Area Median Income (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>).</>
 
 
-const body_4 = <>While explicit refusals are now illegal in many states, our data reveals that voucher holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
+const body_4 = <>While explicit refusals are now illegal in many states (via source of income protections), our data reveals that voucher-holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.</>
 
 
-const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (&ldquo;soft discrimination&rdquo;).</>
-const body_6 = <>Property owner limits prospective tenants to specific properties, or deny knowing what a section 8 voucher is.</>
-const body_7 = <>Landlords/brokers stop responding to section 8 voucher holders requests.</>
-const body_8 = <>Property owner outwardly says that they don’t accept housing vouchers.</>
+const body_5 = <>Through our text-based investigations, we have found various forms of discrimination against voucher-holders by landlords, both outright and implicit (termed &ldquo;soft discrimination&rdquo;).</>
+const body_6 = <>Property owners limit prospective tenants to specific properties, or deny knowing what a Section 8 voucher is.</>
+const body_7 = <>Landlords/brokers stop responding to Section 8 voucher-holders' requests.</>
+const body_8 = <>Property owners explicitly say that they do not accept housing vouchers.</>
 const body_9 = <>Placeholder text for section nine.</>
 const body_10 = <>Placeholder text for section ten.</>
 
@@ -33,9 +36,9 @@ const BOXES = [
   { id: 4,  title: 'Our investigation:', activation: 0.35, body: body_4 },
 
   { id: 5,  title: 'Types of discrimination:',  activation: 0.45, body: body_5 },
-  { id: 6,  title: 'Steering',   activation: 0.55, body: body_6 },
-  { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7 },
-  { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8 },
+  { id: 6,  title: 'Steering',   activation: 0.55, body: body_6, graphic: <img src={steering} alt="Steering" style={{ width: '100%', marginTop: '12px', }} /> },
+  { id: 7,  title: 'Ghosting', activation: 0.65, body: body_7, graphic: <img src={ghosting} alt="Ghosting" style={{ width: '100%', marginTop: '12px', }} /> },
+  { id: 8,  title: 'Direct Rejection', activation: 0.75, body: body_8, graphic: <img src={rejection} alt="Rejection" style={{ width: '100%', marginTop: '12px', }} /> },
   { id: 9,  title: 'Nine',  activation: 0.85, body: body_9 },
   { id: 10, title: 'Ten',   activation: 0.95, body: body_10 },
 ]
