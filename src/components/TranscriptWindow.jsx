@@ -32,7 +32,7 @@ export default function TranscriptWindow({ rows, activeRowIndex }) {
   return (
     <div style={{
       flexShrink:    0,
-      height:        '160px',
+      height:        '140px',
       display:       'flex',
       flexDirection: 'column',
       alignItems:    'flex-start',
