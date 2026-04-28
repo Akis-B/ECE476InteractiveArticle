@@ -11,7 +11,6 @@ function normalizeStatus(raw) {
   if (s === 'inconclusive') return 'inconclusive'
   if (s === 'pending') return 'pending'
   if (s === 'no claim') return 'no claim'
-  if (s === 'tbd') return 'tbd'
   return 'unknown'
 }
 
@@ -20,7 +19,6 @@ function getStatusColor(normalized) {
     case 'inconclusive': return '#898989' 
     case 'pending':      return '#B10000' 
     case 'no claim':     return '#1D2CF3' 
-    case 'tbd':          return '#D1D1D1' 
     default:             return '#BCBCBC'
   }
 }
@@ -40,8 +38,13 @@ function normalizeRow(row) {
   const zipMatch = address.match(/CA\s+(\d{5})/)
   const zip = zipMatch ? zipMatch[1] : null
 
+  // Extract street name: remove leading numbers, take part before comma or unit identifiers
+  const streetPart = address.split(',')[0].replace(/^\d+\s+/, '').trim()
+  const streetName = streetPart.split(/\s+(?:#|Apt|Unit|Ste|Floor)/i)[0].trim()
+
   return {
     address,
+    streetName,
     isSF,
     isLA,
     zip,
@@ -123,11 +126,13 @@ export default function ArticleFramework() {
       header: true,
       skipEmptyLines: true,
       complete: (result) => {
-        const rows = result.data.map(normalizeRow)
+        const rows = result.data
+          .filter(r => r.Status && r.Status.toLowerCase().trim() !== 'tbd')
+          .map(normalizeRow)
         
         const sortFn = (a, b) => {
-          const order = { 'no claim': 0, 'inconclusive': 1, 'pending': 2, 'tbd': 3, 'unknown': 4 }
-          return (order[a.statusNormalized] ?? 5) - (order[b.statusNormalized] ?? 5)
+          const order = { 'no claim': 0, 'inconclusive': 1, 'pending': 2, 'unknown': 3 }
+          return (order[a.statusNormalized] ?? 4) - (order[b.statusNormalized] ?? 4)
         }
 
         setSfRows(rows.filter(r => r.isSF).sort(sortFn))

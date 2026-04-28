@@ -150,10 +150,26 @@ function getTooltipText(status) {
     case 'no claim':     return 'There was no Claim for HRI to report this as discrimination'
     case 'inconclusive': return 'HRI could not determine if this was proper discrimination'
     case 'pending':      return 'This is classified as discrimination'
-    case 'tbd':          return 'Status to be determined'
     default:             return null
   }
 }
+
+const MagnifyingGlassIcon = ({ active }) => (
+  <svg 
+    width="20" 
+    height="20" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    {active && <line x1="8" y1="11" x2="14" y2="11" />}
+  </svg>
+)
 
 export default function MatrixCanvas({ rows, drawRef, city }) {
   const canvasRef      = useRef(null)
@@ -165,6 +181,18 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
   
   const [geoData, setGeoData] = useState(null)
   const [hoveredFeature, setHoveredFeature] = useState(null)
+  const [zoomEnabled, setZoomEnabled] = useState(false)
+
+  useEffect(() => {
+    if (zoomEnabled) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [zoomEnabled])
 
   const targetARFRef = useRef(0)
   const posXRef      = useRef(null)
@@ -218,14 +246,27 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
     for (let i = 0; i < total; i++) {
       const isTargetActive = i <= activated
       if (st[i] === 0 && !isTargetActive) continue
+      
+      // If we are just starting to show this dot
       if (st[i] === 0 && isTargetActive) {
         posX[i] = spawns[i].x
         posY[i] = spawns[i].y
         st[i] = 1
       }
 
-      // Re-project target every frame to account for zoom/pan
+      // Calculate where the target IS right now based on map transform
       const p = project(targets[i].lon, targets[i].lat, bounds, w, h, transform)
+      
+      // If zoom is enabled, we 'freeze' the animation state and just stick them to their map targets
+      if (zoomEnabled) {
+          if (st[i] !== 0) {
+              posX[i] = p.x
+              posY[i] = p.y
+              st[i] = 2 // Lock to target
+          }
+          continue
+      }
+
       const tx = isTargetActive ? p.x : spawns[i].x
       const ty = isTargetActive ? p.y : spawns[i].y
 
@@ -346,7 +387,7 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
       y: h + 20 
     }))
 
-    metaRef.current = { dotRadius: 1.5, targets, spawns, w, h, bounds }
+    metaRef.current = { dotRadius: 2.5, targets, spawns, w, h, bounds }
     initAnimState(rows.length)
     if (stateRef.current) stateRef.current.fill(0)
   }, [rows, initAnimState, city, geoData])
@@ -370,6 +411,7 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
   }, [setup])
 
   const onWheel = useCallback((e) => {
+      if (!zoomEnabled) return
       e.preventDefault()
       const t = transformRef.current
       const zoomSpeed = 0.001
@@ -385,18 +427,19 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
       t.x = mx - (mx - t.x) * factor
       t.y = my - (my - t.y) * factor
       t.k = newK
-  }, [])
+  }, [zoomEnabled])
 
   const onMouseDown = useCallback((e) => {
+      if (!zoomEnabled) return
       isDraggingRef.current = true
       lastMousePosRef.current = { x: e.clientX, y: e.clientY }
-  }, [])
+  }, [zoomEnabled])
 
   const onMouseMove = useCallback((e) => {
     const meta = metaRef.current
     if (!meta || !geoData) return
     
-    if (isDraggingRef.current) {
+    if (isDraggingRef.current && zoomEnabled) {
         const dx = e.clientX - lastMousePosRef.current.x
         const dy = e.clientY - lastMousePosRef.current.y
         transformRef.current.x += dx
@@ -432,7 +475,7 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
         el.style.display    = 'block'
         el.style.left       = `${mx + 10}px`
         el.style.top        = `${my - 20}px`
-        tooltipAddrRef.current.textContent = rows[i].address
+        tooltipAddrRef.current.textContent = rows[i].streetName
         tooltipTextRef.current.textContent = text
         tooltipZipRef.current.textContent = rows[i].zip ? `ZIP: ${rows[i].zip}` : ''
         foundDot = true
@@ -473,7 +516,7 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
         if (tooltipRef.current) tooltipRef.current.style.display = 'none'
       }
     }
-  }, [rows, geoData])
+  }, [rows, geoData, zoomEnabled])
 
   const onMouseUp = useCallback(() => {
       isDraggingRef.current = false
@@ -481,9 +524,39 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <button
+        onClick={() => setZoomEnabled(!zoomEnabled)}
+        title={zoomEnabled ? "Lock Zoom" : "Enable Zoom & Pan"}
+        style={{
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          zIndex: 30,
+          background: zoomEnabled ? '#1D2CF3' : '#fff',
+          color: zoomEnabled ? '#fff' : '#1D2CF3',
+          border: '1.5px solid #1D2CF3',
+          borderRadius: '50%',
+          width: '36px',
+          height: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          transition: 'all 0.2s ease',
+          padding: 0
+        }}
+      >
+        <MagnifyingGlassIcon active={zoomEnabled} />
+      </button>
       <canvas
         ref={canvasRef}
-        style={{ display: 'block', width: '100%', height: '100%', cursor: isDraggingRef.current ? 'grabbing' : 'grab' }}
+        style={{ 
+          display: 'block', 
+          width: '100%', 
+          height: '100%', 
+          cursor: !zoomEnabled ? 'default' : (isDraggingRef.current ? 'grabbing' : 'grab') 
+        }}
         onWheel={onWheel}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
