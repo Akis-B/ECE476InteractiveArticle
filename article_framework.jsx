@@ -25,6 +25,11 @@ function getStatusColor(normalized) {
   }
 }
 
+const LINK = {
+  color: '#1D2CF3',
+  textDecoration: 'underline',
+}
+
 function normalizeRow(row) {
   const statusNormalized = normalizeStatus(row.Status)
   const address = row.Address || ''
@@ -59,27 +64,35 @@ const IntroSection = () => (
     <section style={{ marginBottom: '60px' }}>
       <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1D2CF3', marginBottom: '24px' }}>Who are we?</h2>
       <p style={{ fontSize: '18px', color: '#222' }}>
-        The Housing Rights Initiative (HRI) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.
+       The Housing Rights Initiative (<a href="https://www.housingrightsus.org/" target="_blank" rel="noreferrer" style={LINK}>HRI</a>) is a national non-profit watchdog group that investigates real estate fraud, connects tenants to legal services, and protects fair and affordable housing. HRI conducts undercover testing of landlords and brokers to verify compliance with fair housing laws.
       </p>
     </section>
 
     <section style={{ marginBottom: '60px' }}>
       <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1D2CF3', marginBottom: '24px' }}>What is a Section 8 Voucher?</h2>
       <p style={{ fontSize: '18px', color: '#222' }}>
-        Section 8 Housing Vouchers, a part of the Housing Choice Voucher Program, is a federal rental assistance program managed by HUD. It assists low-income families, seniors, and people with disabilities to afford safe, private-market housing.
+        Section 8 Housing Vouchers, a part of the Housing Choice Voucher Program, is a federal rental assistance program managed by the U.S. Department of Housing and Urban Development (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>). It assists low-income families, seniors, and people with disabilities to afford safe, private-market housing.
       </p>
     </section>
 
     <section style={{ marginBottom: '60px' }}>
       <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1D2CF3', marginBottom: '24px' }}>Who can be a voucher holder?</h2>
       <p style={{ fontSize: '18px', color: '#222', marginBottom: '24px' }}>
-        Section 8 eligibility requires a “Very Low” annual income, defined as below 50% of the local Area Median Income.
+        Section 8 eligibility requires a &ldquo;Very Low&rdquo; annual income, defined as below 50% of the local Area Median Income (<a href="https://www.hud.gov/helping-americans/public-housing#:~:text=HAs%20use%20income%20limits%20developed,limits%20here%20on%20the%20internet." target="_blank" rel="noreferrer" style={LINK}>HUD</a>).
       </p>
       <div style={{ background: '#f5f5f5', padding: '40px', borderRadius: '8px', textAlign: 'center' }}>
         <img src={whoSec8} alt="Who can be a Section 8 voucher holder" style={{ maxWidth: '100%', height: 'auto' }} />
-        <p style={{ fontSize: '13px', marginTop: '16px', opacity: 0.7 }}>National Profile (UC Berkeley).</p>
+        <p style={{ fontSize: '13px', marginTop: '16px', opacity: 0.7 }}>National Profile (<a href="https://vcresearch.berkeley.edu/news/who-served-housing-choice-voucher-program" target="_blank" rel="noreferrer" style={LINK}>UC Berkeley</a>).</p>
       </div>
     </section>
+
+    <section style={{ marginBottom: '60px' }}>
+      <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1D2CF3', marginBottom: '24px' }}>Our investigation:</h2>
+      <p style={{ fontSize: '18px', color: '#222', marginBottom: '24px' }}>
+        While explicit refusals are now illegal in many states (via source of income protections), our data reveals that voucher-holders are frequently met with a pattern of silence and evasion. These investigations were done in Los Angeles and San Francisco, CA, organized by specific zip codes within each city. Our data pinpoints the specific interactions between testers and landlords, which primarily take place over text messaging.
+      </p>
+    </section>
+
   </div>
 )
 

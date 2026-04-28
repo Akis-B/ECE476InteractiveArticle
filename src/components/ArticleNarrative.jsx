@@ -2,7 +2,11 @@ import { useEffect, useRef } from 'react'
 
 // Status Explanations
 const body_no_claim = <><b>"No Claim"</b> means that while the interaction occurred, there was no specific legal claim for HRI to report this as discrimination under the current testing criteria.</>
-const body_inconclusive = <><b>"Inconclusive"</b> indicates that HRI could not determine if this was proper discrimination. These cases often involve evasion, silence, or ambiguous responses from landlords.</>
+const body_inconclusive = <><b>"Inconclusive"</b> indicates that HRI could not determine if this was proper discrimination. These cases often involve evasion, silence, or ambiguous responses from landlords. Two types of "soft" disrimination are:  
+<br /><br />
+<b>1. Steering</b>, where property owners limit prospective tenants to specific properties, or deny knowing what a Section 8 voucher is.
+<br /><br /> 
+<b>2. Ghosting</b>, where landlords/brokers stop responding to Section 8 voucher-holders' messages.</>
 const body_pending = <><b>"Pending"</b> points are classified as clear instances of discrimination. These are interactions where vouchers were explicitly or implicitly refused, violating fair housing laws.</>
 const body_tbd = <><b>"TBD"</b> represents data points where the status is still to be determined based on the raw records from the investigation.</>
 
