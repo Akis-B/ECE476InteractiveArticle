@@ -2,15 +2,13 @@ import { useRef, useState, useEffect } from 'react'
 import MatrixCanvas from './MatrixCanvas'
 import TranscriptWindow from './TranscriptWindow'
 import ArticleNarrative from './ArticleNarrative'
-import BottomProgressBar from './BottomProgressBar'
 
 export default function ScrollExperience({ rows, city }) {
   const containerRef = useRef(null)
   const [activeRowIndex, setActiveRowIndex] = useState(0)
 
-  const canvasDrawRef      = useRef(null)
-  const progressBarFillRef = useRef(null)
-  const boxUpdateRef       = useRef(null)
+  const canvasDrawRef = useRef(null)
+  const boxUpdateRef  = useRef(null)
 
   const totalCount = rows.length
 
@@ -39,11 +37,6 @@ export default function ScrollExperience({ rows, city }) {
           lastARF = arf
 
           canvasDrawRef.current?.(arf)
-
-          if (progressBarFillRef.current) {
-            progressBarFillRef.current.style.width = `${progress * 100}%`
-          }
-
           boxUpdateRef.current?.(progress)
 
           const rowIndex = Math.min(Math.floor(arf), rows.length - 1)
@@ -61,11 +54,10 @@ export default function ScrollExperience({ rows, city }) {
   }, [rows.length, totalCount])
 
   return (
-    <>
-      <div
-        ref={containerRef}
-        style={{ position: 'relative', height: '1100vh', background: '#fff' }}
-      >
+    <div
+      ref={containerRef}
+      style={{ position: 'relative', height: '1100vh', background: '#FAFAF8' }}
+    >
         <div style={{
           position:      'sticky',
           top:           0,
@@ -74,8 +66,8 @@ export default function ScrollExperience({ rows, city }) {
           height:        '100vh',
           display:       'flex',
           flexDirection: 'column',
-          background:    '#fff',
-          borderRight:   '1px solid #ebebeb',
+          background:    '#FAFAF8',
+          borderRight:   '0.5px solid #E2DFD7',
           boxSizing:     'border-box',
           padding:       '24px 16px 16px 24px',
           zIndex:        1,
@@ -99,9 +91,6 @@ export default function ScrollExperience({ rows, city }) {
         }}>
           <ArticleNarrative updateRef={boxUpdateRef} rows={rows} />
         </div>
-      </div>
-
-      <BottomProgressBar fillRef={progressBarFillRef} />
-    </>
+    </div>
   )
 }

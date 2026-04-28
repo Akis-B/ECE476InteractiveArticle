@@ -45,7 +45,7 @@ export default function TranscriptWindow({ rows, activeRowIndex }) {
           color:          '#bbb',
           fontSize:       '9px',
           marginBottom:   '6px',
-          fontFamily:     'system-ui, sans-serif',
+          fontFamily:     "'Instrument Sans', system-ui, sans-serif",
           letterSpacing:  '0.09em',
           textTransform:  'uppercase',
         }}>
@@ -67,7 +67,7 @@ export default function TranscriptWindow({ rows, activeRowIndex }) {
               color:      line.speaker === 'V' ? '#1D2CF3' : line.speaker === 'L' ? '#767676' : '#999',
               fontSize:   '14px',
               lineHeight: 1.4,
-              fontFamily: "'Funnel Display', sans-serif",
+              fontFamily: "'Instrument Sans', system-ui, sans-serif",
             }}
           >
             {line.text}
@@ -85,7 +85,7 @@ export default function TranscriptWindow({ rows, activeRowIndex }) {
               fontSize:   '11px',
               cursor:     'pointer',
               padding:    '2px 0',
-              fontFamily: 'system-ui, sans-serif',
+              fontFamily: "'Instrument Sans', system-ui, sans-serif",
               letterSpacing: '0.03em',
             }}
           >

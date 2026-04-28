@@ -249,7 +249,7 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
       const ctx = canvas.getContext('2d')
       ctx.clearRect(0, 0, w, h)
       
-      ctx.fillStyle = '#ffffff'
+      ctx.fillStyle = '#FAFAF8'
       ctx.fillRect(0, 0, w, h)
 
       geoData.features.forEach(f => {
@@ -267,11 +267,11 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
           ctx.translate(cX/count, cY/count)
           ctx.scale(1.03, 1.03)
           ctx.translate(-cX/count, -cY/count)
-          ctx.fillStyle = '#e0e0e0'
-          ctx.strokeStyle = '#a0a0a0'
+          ctx.fillStyle = '#D8D3C8'
+          ctx.strokeStyle = '#B0AA9E'
         } else {
-          ctx.fillStyle = '#f0f0f0'
-          ctx.strokeStyle = '#d0d0d0'
+          ctx.fillStyle = '#EDE9E0'
+          ctx.strokeStyle = '#CEC9BC'
         }
         
         ctx.lineWidth = isHovered ? 1.0 : 0.5
@@ -291,8 +291,8 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
         ctx.restore()
       })
 
-      ctx.fillStyle = '#94a3b8'
-      ctx.font = "bold 12px system-ui"
+      ctx.fillStyle = '#9CA3AF'
+      ctx.font = "500 11px 'Instrument Sans', system-ui"
       ctx.textAlign = "left"
       ctx.fillText(city === 'SF' ? "SAN FRANCISCO" : "LOS ANGELES", H_PAD + 10, V_PAD + 20)
 
@@ -500,18 +500,18 @@ export default function MatrixCanvas({ rows, drawRef, city }) {
           display:       'none',
           position:      'absolute',
           pointerEvents: 'none',
-          background:    '#fff',
-          border:        '1px solid #e0e0e0',
-          borderRadius:  '4px',
-          padding:       '7px 11px',
-          maxWidth:      '210px',
-          boxShadow:     '0 2px 10px rgba(0,0,0,0.10)',
+          background:    '#FFFFFF',
+          border:        '0.5px solid #E2DFD7',
+          borderRadius:  '6px',
+          padding:       '9px 13px',
+          maxWidth:      '220px',
+          boxShadow:     '0 4px 20px rgba(0,0,0,0.08)',
           zIndex:        20,
         }}
       >
-        <div ref={tooltipAddrRef} style={{ fontSize: '13px', color: '#000', marginBottom: '2px', textTransform: 'uppercase', fontWeight: 800 }} />
-        <div ref={tooltipZipRef} style={{ fontSize: '10px', color: '#666', marginBottom: '4px', fontWeight: 600 }} />
-        <div ref={tooltipTextRef} style={{ fontSize: '11px', color: '#333', lineHeight: 1.4 }} />
+        <div ref={tooltipAddrRef} style={{ fontSize: '11px', color: '#0F0F0E', marginBottom: '3px', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.06em', fontFamily: "'Instrument Sans', system-ui, sans-serif" }} />
+        <div ref={tooltipZipRef} style={{ fontSize: '10px', color: '#6B7280', marginBottom: '5px', fontWeight: 500, fontFamily: "'Instrument Sans', system-ui, sans-serif", letterSpacing: '0.04em' }} />
+        <div ref={tooltipTextRef} style={{ fontSize: '12px', color: '#2A2928', lineHeight: 1.5, fontFamily: "'Instrument Sans', system-ui, sans-serif" }} />
       </div>
     </div>
   )
