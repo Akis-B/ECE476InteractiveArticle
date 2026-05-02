@@ -61,7 +61,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.12s ease;
+  transition: opacity 0.2s ease;
   padding-top: var(--nav-h);
 }
 

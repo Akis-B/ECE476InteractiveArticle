@@ -25,8 +25,8 @@ export default function IMessageOverlay({ spacerRef, onDone }) {
       const spacerTop  = spacer.getBoundingClientRect().top + window.scrollY
       const scrolled   = Math.max(0, window.scrollY - spacerTop)
       const total      = MESSAGES.length
-      const revealZone = spacer.offsetHeight * 0.87
-      const fadeZone   = spacer.offsetHeight * 0.05
+      const revealZone = spacer.offsetHeight * 0.88
+      const fadeZone   = spacer.offsetHeight * 0.12
 
       const next = new Set()
       MESSAGES.forEach((_, i) => {
