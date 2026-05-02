@@ -284,7 +284,7 @@ export default function ArticleFramework() {
       <div style={{
         visibility: overlayDone ? 'visible' : 'hidden',
         opacity: overlayDone ? 1 : 0,
-        transition: 'opacity 0.5s ease-in-out'
+        transition: 'opacity 0.15s ease'
       }}>
         <IntroWithMatrix />
         

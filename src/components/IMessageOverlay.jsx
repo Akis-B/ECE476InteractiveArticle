@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 
 export const MESSAGES = [
-  { id: 0, type: 'sent',     text: 'hi i want to rent a house' },
-  { id: 1, type: 'received', text: 'ok lets do a tour' },
-  { id: 2, type: 'sent',     text: 'nice, do you take section 8 btw' },
-  { id: 3, type: 'sent',     text: 'hi, do you take section 8 pls?' },
-  { id: 4, type: 'received', text: 'sorry not familiar' },
-  { id: 5, type: 'sent',     text: 'WTF??' },
-  { id: 6, type: 'received', text: 'scroll down to learn more ↓' },
+  { id: 0, type: 'sent',     text: 'Hello! This is Gemma, I saw your online listing. Is the two bedroom still available?' },
+  { id: 1, type: 'received', text: 'Yes, it is! We can schedule a tour if you would like.' },
+  { id: 2, type: 'sent',     text: 'That sounds great. BTW, do you take Section 8?' },
+  { id: 3, type: 'sent',     text: 'Hi, I just wanted to confirm, do you take Section 8 housing vouchers??' },
+  { id: 4, type: 'sent',     text: 'Hello?' },
+  { id: 5, type: 'received', text: 'sorry, not familiar' },
+  { id: 6, type: 'sent', text: 'Scroll down to learn more ↓' },
 ]
 
 // spacerRef is owned by the parent — it points to the scroll-zone wrapper
@@ -25,8 +25,8 @@ export default function IMessageOverlay({ spacerRef, onDone }) {
       const spacerTop  = spacer.getBoundingClientRect().top + window.scrollY
       const scrolled   = Math.max(0, window.scrollY - spacerTop)
       const total      = MESSAGES.length
-      const revealZone = spacer.offsetHeight * 0.82
-      const fadeZone   = spacer.offsetHeight * 0.18
+      const revealZone = spacer.offsetHeight * 0.87
+      const fadeZone   = spacer.offsetHeight * 0.05
 
       const next = new Set()
       MESSAGES.forEach((_, i) => {
